@@ -6,12 +6,11 @@ import functools
 T = typing.TypeVar("T")
 T_func = typing.Callable[..., T]
 
-def curry(
-        func: T_func,
-        *args: list,
-        _first: bool = True,
-        **kwargs: dict
-    ) -> typing.Union[T_func, T]:
+
+def curry(func: T_func,
+          *args: list,
+          _first: bool = True,
+          **kwargs: dict) -> typing.Union[T_func, T]:
     """
     curry python functions
 
@@ -46,7 +45,7 @@ def curry(
     >>> bar(2, 3, 10)
     50
     """
-
+    
     if not _first:
         # test if given arguments suffice
         try:
@@ -56,13 +55,10 @@ def curry(
             if not "expected at least" in error.args[0] \
                 and not "required positional argument" in error.args[0]:
                 raise error
-
+    
     # apply given arguments
-    return functools.partial(
-        curry,
-        functools.partial(func, *args, **kwargs),
-        _first=False
-    )
+    return functools.partial(curry, func, *args, _first=False, **kwargs)
+
 
 if __name__ == "__main__":
     import doctest

@@ -1,5 +1,6 @@
-# curry.py
-Simple currying for python functions
+# curry-py
+
+Simple currying for python functions.
 
 ```python
 >>> foo = lambda a, b, m: (a+b) * m
@@ -17,10 +18,9 @@ baz 42
 42
 ```
 
-curry tries to evaluate the function with as few arguments as possible,
-so try to apply `*args` and `**kwargs` together with required arguments
+Curry tries to evaluate the function with as few arguments as possible, so try to apply `*args` and `**kwargs` together with required arguments.
 
-curry also works as a decorator
+Curry also works as a decorator.
 
 ```python
 >>> @curry
